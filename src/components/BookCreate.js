@@ -13,11 +13,12 @@ const BookCreate = (props) => {
     setTitle("");
   };
   return (
-    <div>
+    <div className="book-create">
+      <div>Add a Book</div>
       <form onSubmit={handleSubmit}>
         <label>Title</label>
-        <input value={title} onChange={handleChange} />
-        <button>Create</button>
+        <input className="input" value={title} onChange={handleChange} />
+        <button className="button">Create</button>
       </form>
     </div>
   );
