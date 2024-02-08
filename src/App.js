@@ -34,7 +34,9 @@ function App() {
     const response = await axios.post("http://localhost:3001/books", {
       title,
     });
-    console.log(response, "check post response");
+    // console.log(response, "check post response");
+    const updatedBooks = [...books, response.data];
+    setBooks(updatedBooks);
   };
   return (
     <div className="app">
