@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
@@ -6,6 +6,15 @@ import axios from "axios";
 
 function App() {
   const [books, setBooks] = useState([]);
+
+  /**
+   * git api calls
+   */
+
+  const fetchData = async () => {
+    const response = await axios.get("http://localhost:3001/books");
+    setBooks(response.data);
+  };
 
   const editBookById = (id, newTitle) => {
     const updatedBooks = books.map((book) => {
@@ -34,10 +43,13 @@ function App() {
     const response = await axios.post("http://localhost:3001/books", {
       title,
     });
-    // console.log(response, "check post response");
     const updatedBooks = [...books, response.data];
     setBooks(updatedBooks);
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className="app">
       <h1>Reading List</h1>
