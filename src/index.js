@@ -3,12 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import BookContext from "./context/book";
+import { Provider } from "./context/book";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BookContext.Provider value={5}>
+  <Provider>
     <App />
-  </BookContext.Provider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
