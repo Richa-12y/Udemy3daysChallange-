@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import BookEdit from "./BookEdit";
-const BookShow = ({ book, deleteBookById, editBookById }) => {
+import BookContext from "../context/book";
+const BookShow = ({ book }) => {
+  const { deleteBookById } = useContext(BookContext);
   const [showEdit, setShowEdit] = useState(false);
   const handleDeleteClick = () => {
     deleteBookById(book.id);
@@ -10,9 +12,9 @@ const BookShow = ({ book, deleteBookById, editBookById }) => {
     setShowEdit(!showEdit);
   };
 
-  const handleSubmit = (id, newTitle) => {
+  const handleSubmit = () => {
     setShowEdit(false);
-    editBookById(id, newTitle);
+    // editBookById(id, newTitle);
   };
   let content = <h3>{book.title}</h3>;
   if (showEdit) {
